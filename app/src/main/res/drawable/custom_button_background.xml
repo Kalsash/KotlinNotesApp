@@ -1,0 +1,14 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#FF4081"/> <!-- Цвет фона при нажатии -->
+            <!-- Другие свойства фона -->
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#E040FB"/> <!-- Обычный цвет фона -->
+            <!-- Другие свойства фона -->
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,5 @@
+<!-- purple_button_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/purple"/> <!-- Set the background color to purple -->
+    <corners android:radius="8dp"/> <!-- Optionally, round the corners of the button -->
+</shape>
