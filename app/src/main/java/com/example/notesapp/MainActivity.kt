@@ -9,9 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.marginRight
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var notesRepository: NotesRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        notesRepository = NotesRepository(this)
+        val savedNotes = notesRepository.getAllNotes()
+        for (note in savedNotes) {
+            addNoteToContainer(note, container)
+        }
 
         // AddButton
         val addButton = findViewById<Button>(R.id.button)
@@ -32,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             val noteText = findViewById<EditText>(R.id.InputText).text.toString()
             if (noteText.isNotBlank()) {
                 addNoteToContainer(noteText, container)
+                notesRepository.addNote(noteText)
             }
         }
     }
@@ -54,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             container.removeView(noteView)
+            notesRepository.deleteNote(noteText)
         }
 
         noteView.addView(textView)
